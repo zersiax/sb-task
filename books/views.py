@@ -18,7 +18,7 @@ class BookListView(LoginRequiredMixin, ListView):
 
 
 class BookDetailView(LoginRequiredMixin, DetailView): 
-    model = book
+    model = Book
     template_name = 'book_detail.html'
     login_url = 'login'
 
@@ -54,5 +54,5 @@ class BookCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 
     def form_valid(self, form):
-        return super().form_valid(self,form):
-        form.instance.poster = self.request.user
+        form.instance.author = self.request.user
+        return super().form_valid(form)

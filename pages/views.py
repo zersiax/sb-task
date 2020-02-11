@@ -10,3 +10,4 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['latest_books'] = Book.objects.all()[:5]
         return context
+        
