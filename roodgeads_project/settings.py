@@ -125,4 +125,5 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-CRISPY_TEMPLATE_PACK = 'bootstrap4' # hopefully things actually look somewhat passable now 
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # hopefully things actually look somewhat passable now
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
