@@ -17,5 +17,7 @@
         <a href="{% url 'book_edit' book.pk %}">Edit</a> |
         <a href="{% url 'book_delete' book.pk %}">Delete</a>
       </div>
-    <{% endfor %}
+    </div>
+    <br>
+{% endfor %}
 {% endblock content %}

@@ -11,4 +11,49 @@
   <a href="{% url 'login' %}">Log In</a> |
   <a href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
+ <h3>List of 5 most recent books</h3>
+   {% for book in latest_books %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ book.title }}</span> &middot;
+        <span class="text-muted">by {{ book.author }} |
+        {{ book.rating }} out of 5 stars</span>
+      </div>
+      <div class="card-body">
+        This is the synopsis of the book that might at some point be pulled in from a different source.
+      </div>
+
+    </div>
+    <br>
+   {% endfor %}
+  <h3>List of 5 highest rated books</h3>
+   {% for book in top_rating_books %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ book.title }}</span> &middot;
+        <span class="text-muted">by {{ book.author }} |
+        {{ book.rating }} out of 5 stars</span>
+      </div>
+      <div class="card-body">
+        This is the synopsis of the book that might at some point be pulled in from a different source.
+      </div>
+
+    </div>
+    <br>
+   {% endfor %}
+  <h3>List of 5 most added books</h3>
+   {% for book in top_count_books %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ book.title }}</span> &middot;
+        <span class="text-muted">by {{ book.author }} |
+        {{ book.rating }} out of 5 stars</span>
+      </div>
+      <div class="card-body">
+        This is the synopsis of the book that might at some point be pulled in from a different source.
+      </div>
+    </div>
+    <br>
+   {% endfor %}
+
 {% endblock content %}

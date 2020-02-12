@@ -14,7 +14,7 @@ class BookListView(LoginRequiredMixin, ListView):
     template_name = 'book_list.html'
     login_url = 'login'
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user)
+        return self.model.objects.filter(poster=self.request.user)
 
 
 class BookDetailView(LoginRequiredMixin, DetailView): 
@@ -30,7 +30,7 @@ class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     login_url = 'login'
     def test_func(self):
         obj = self.get_object()
-        return obj.author == self.request.user
+        return obj.poster == self.request.user
 
 
 class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -40,7 +40,7 @@ class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     login_url = 'login'
     def test_func(self):
         obj = self.get_object()
-        return obj.author == self.request.user
+        return obj.poster == self.request.user
 
 
 class BookCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -49,10 +49,10 @@ class BookCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     fields = ('title', 'rating', 'author',)
     login_url = 'login'
     def test_func(self):
-        obj = self.get_object()
-        return obj.author == self.request.user
+        return True
 
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        print("test")
+        form.instance.poster = self.request.user
         return super().form_valid(form)
